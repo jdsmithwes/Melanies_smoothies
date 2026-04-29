@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Snowflake credentials are loaded from Streamlit secrets.
 cnx = st.connection("snowflake")
