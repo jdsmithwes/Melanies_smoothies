@@ -16,9 +16,7 @@ st.write(
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on you Smoothie will be:',name_on_order)
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width= True)
-st.stop()
+
 
 ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
 
@@ -45,9 +43,13 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
 
+
+
     st.write(my_insert_stmt)
     st.stop()
 
-    #New section to display smoothiefroot nutrition information
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
+st.dataframe(data=my_dataframe, use_container_width= True)
+st.stop()
 
     
